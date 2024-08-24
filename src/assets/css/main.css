@@ -6,7 +6,8 @@
     --main-color-1: hsl(234, 100%, 63%);        /*#4356FF; */
     --main-color-2: #394896;
     --main-color-3: #EDD795;
-    --gradient-color-1: #555C80;
+    /*--gradient-color-1: #00415a;*/
+    --gradient-color-1: #2c2c2c;
     --gradient-color-2: #0A0A0A;
     --white-color: #FFF;
     --white-shadow: #CCCED4;
@@ -15,8 +16,9 @@
     /*========== Font and typography ==========*/
     /*.5rem = 8px | 1rem = 16px ...*/
     --body-font: "Roboto";
-    --second-font: "Saira";
+    --second-font: "Saira", cursive;
     --biggest-font-size: 3.5rem;
+    --big-font-size: 2.5rem;
     --h1-font-size: 1.5rem;
     --h2-font-size: 1.25rem;
     --h3-font-size: 1rem;
@@ -26,6 +28,7 @@
     /*========== Font weight ==========*/
     --font-regular: 400;
     --font-semi-bold: 600;
+    --font-extra-bold: 900;
 
     /*========== z index ==========*/
     --z-tooltip: 10;
@@ -35,7 +38,7 @@
 /*========== Responsive typography ==========*/
 @media screen and (min-width: 1150px) {
     :root {
-        --biggest-font-size: 5.5rem;
+        --biggest-font-size: 4.5rem;
         --h1-font-size: 2.5rem;
         --h2-font-size: 1.5rem;
         --h3-font-size: 1.25rem;
@@ -58,9 +61,13 @@ html {
 body{
     font-family: var(--body-font), sans-serif;
     font-size: var(--normal-font-size);
-    background-repeat: repeat-x;
+
     /*background-image: linear-gradient(to bottom left, var(--gradient-color-1), var(--gradient-color-2));*/
-    background-image: linear-gradient(to bottom right, var(--gradient-color-2), var(--gradient-color-1));
+    /*background-image: linear-gradient(to top right, var(--gradient-color-2), var(--gradient-color-1));*/
+    background-image: url('../img/background-hero.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: var(--white-color);
     /*background-color: var(--main-color-1);*/
     /*font: Roboto  400  20px;*/
@@ -97,7 +104,6 @@ img {
 
 .section {
     width: 100%;
-    height: calc(100vh - var(--header-height) - 2rem);
     padding: 5rem 1rem;
 }
 
@@ -105,7 +111,8 @@ img {
     font: var(--font-regular) var(--h1-font-size) var(--second-font);
     text-align: center;
     margin-bottom: 1.5rem;
-    text-shadow: var(--shadow-text);
+    color: var(--main-color-1);
+
 }
 .footer{
     height: var(--header-height);
@@ -120,36 +127,38 @@ img {
 
 /* ====== >> hero*/
 .hero {
-    /*margin-top: calc(var(--header-height) + 1rem);*/
-    height: calc(100vh - var(--header-height) - 2rem); /* header height  */
-    /*height: 100vh;*/
+    /*height: calc(100vh - var(--header-height) + 1rem); !* header height  *!*/
+    height: calc(100vh - var(--header-height) - 2rem);
+    margin-top: var(--header-height);
     display: flex;
-    justify-content: flex-end;
-
-
-
+    align-items:flex-start;
+    justify-content: space-between;
 }
 
 .hero__content{
-    width: 66.67%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 2rem;
-}
-.hero__image{
-    width: 33.33%;
 
-    background-image: url('../img/hero.png');
-    background-size: auto;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-.hero__description{
-    font: var(--second-font);
+    /*justify-content: center;*/
+    /*padding: 1rem;*/
+    padding-top: 10%;
+    padding-left: 20%;
     color: var(--main-color-1);
-    font-variant-caps: all-petite-caps;
-    text-align: center;
+    font-family: var(--second-font);
+}
+.hero__content h1{
+    font-weight: var(--font-extra-bold);
+    font-size: var(--biggest-font-size);
+}
+.hero__content h2 {
+    font-weight: var(--font-extra-bold);
+    font-size: var(--big-font-size);
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    text-align: justify;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 /*=============== HEADER & NAV ===============*/
@@ -161,6 +170,7 @@ img {
     transition: box-shadow 0.4s;
     display: flex;
     z-index: var(--z-fixed);
+    height: var(--header-height);
 }
 
 .nav{
@@ -193,7 +203,7 @@ img {
 .nav__list li a{
     color: var(--white-color);
     font-family: var(--second-font), serif;
-    font-size: var(--small-font-size);
+    font-size: var(--normal-font-size);
     font-weight: var(--font-regular);
 }
 
